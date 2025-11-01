@@ -21,7 +21,6 @@ WORKDIR /var/www/html
 # Correr composer install para descargar "phpdotenv" (de tu composer.json)
 RUN composer install --no-dev --optimize-autoloader
 
-# Habilitar mod_rewrite de Apache (para que funcionen los .htaccess)
+# Habilitar mod_rewrite (para URL amigables) Y mod_headers (PARA CORS)
 RUN a2enmod rewrite
-
-# (No necesitamos un comando CMD. La imagen de Apache se inicia sola)
+RUN a2enmod headers

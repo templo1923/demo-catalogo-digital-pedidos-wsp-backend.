@@ -26,6 +26,5 @@ RUN a2enmod rewrite
 RUN a2enmod headers
 
 # === ¡EL ARREGLO FINAL! ===
-# Crear un "acceso directo" desde donde tu app busca el .env
-# hacia donde Render REALMENTE pone el Secret File.
-RUN ln -s /etc/secrets/.env /var/www/html/.env
+# FORZAR (-f) el "acceso directo" para que SOBREESCRIBA el .env de GitHub
+RUN ln -sf /etc/secrets/.env /var/www/html/.env
